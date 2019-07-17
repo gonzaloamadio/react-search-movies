@@ -3,8 +3,20 @@ import Movie from './Movie'
 
 export default function SearchResults(props) {
     return (
-        props.results.map(movie => {
-            return <p key={movie.imdbID}>{movie.Title}</p>
-        })
+        <div className='MoviesList'>
+            {
+                props.results.map(movie => {
+                    return (
+                        <div key={movie.imdbID} className='MoviesList-item'>
+                            <Movie 
+                                title={movie.Title}
+                                poster={movie.Poster}
+                                year={movie.Year}
+                            />
+                        </div>
+                    )
+                })
+            }
+        </div>
     )
 }
