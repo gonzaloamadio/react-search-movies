@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
+    id : PropTypes.string,
     title: PropTypes.string.isRequired,
     year: PropTypes.string,
     poster: PropTypes.string,
@@ -13,10 +14,10 @@ const defaultProps = {
 
 export default class Movie extends React.Component {
     render() {
-        const {title, poster, year} = this.props
+        const {id,title, poster, year} = this.props
         return (
             <React.Fragment>
-                <div className="card">
+                <a href={`?id=${id}`} className="card">
                     <div className="card-image">
                         <figure className="image">
                         <img src={poster} alt={title} />
@@ -30,7 +31,7 @@ export default class Movie extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 
             </React.Fragment>
         );
