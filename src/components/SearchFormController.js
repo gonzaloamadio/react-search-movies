@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import SearchForm from './SearchForm';
-import {fetchTitle} from './omdb-fetch'
+// import {fetchTitle} from './omdb-fetch'
 
 const API = `http://www.omdbapi.com/?apikey=28187bdd&`
 
