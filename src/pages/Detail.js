@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
+import ButtonBackToHome from '../components/ButtonBackToHome'
 
 const API = `http://www.omdbapi.com/?apikey=28187bdd&`
 
 export default class Detail extends Component {
     static propTypes = {
-        id: PropTypes.string
+        match: PropTypes.shape({
+            params: PropTypes.object,
+            isExact: PropTypes.bool,
+            path: PropTypes.string,
+            url: PropTypes.string
+        })
     }
     state = { movie: {} }
 
@@ -19,12 +25,10 @@ export default class Detail extends Component {
     }
 
     componentDidMount(){
-        const {id} = this.props
+        console.log('PROPS FROM ROUTER')
+        console.log(this.props)
+        const {id} = this.props.match.params
         this._fetchDetails({id})
-    }
-
-    _goBack(){
-        window.history.back()
     }
 
     render() {
@@ -36,7 +40,7 @@ export default class Detail extends Component {
                 <h3>{Actors}</h3> 
                 <span>{Metascore}</span>
                 <p>{Plot}</p>
-                <button onClick={this._goBack}>Volver</button>
+                <ButtonBackToHome />
             </div>
         )
     }
